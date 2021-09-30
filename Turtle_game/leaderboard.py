@@ -42,27 +42,30 @@ def load_leaderboard(file_name, leader_names, leader_scores):
 def update_leaderboard(file_name, leader_names, leader_scores, player_name, player_score):
     leader_index = 0
     # TODO 5: loop through all the scores in the existing leaderboard list
-    '''
-      while ():
-      # TODO 6: check if this is the position to insert new score at
-      if ():
-        break
-      else:
-        leader_index = leader_index + 1
-    '''
+    while (leader_index < len(leader_scores)):
+
+# TODO 6: check if this is the position to insert new score at
+        if player_score > leader_scores[leader_index]:
+            leader_scores.append(leader_index,player_score)
+            leader_scores.append(leader_index,player_name)
+        else:
+            leader_index = leader_index + 1
+
     # TODO 7: insert the new player and score at the appropriate position
-
+# did that #
     # TODO 8: keep both lists at 5 elements only (top 5 players)
-
+        if len(leader_names) == 6:
+            leader_names.pop()
+        if len(leader_scores) == 6:
+            leader_scores.pop()
     # store the latest leaderboard back in the file
     leaderboard_file = open(file_name, "w")  # this mode opens the file and erases its contents for a fresh start
     leader_index = 0
     # TODO 9: loop through all the leaderboard elements and write them to the file
-    '''
-      while ():
-      leaderboard_file.write(leader_names[leader_index] + "," + str(leader_scores[leader_index]) + "\n")
-      leader_index = leader_index + 1
-    '''
+    while leader_index < len(leader_names):
+        leaderboard_file.write(leader_names[leader_index] + "," + str(leader_scores[leader_index]) + "\n")
+        leader_index = leader_index + 1
+
     leaderboard_file.close()
 
 
